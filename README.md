@@ -21,4 +21,9 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+## TestGuru
+* Категории Тестов
+* Тесты
+* Вопросы к тестам
+* Пользователи
+* Администраторы сайта
