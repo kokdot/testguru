@@ -5,6 +5,8 @@ class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, foreign_key: "user_id" , class_name: "User"
 
+  scope :easy, -> { where(level: 0..1).order(created_at: :desc) }
+
   def self.categories(category)
     joins(:category).where("categories.title like ? ", category).order(:title, :desc).pluck(:title)
   end
