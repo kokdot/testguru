@@ -12,5 +12,9 @@ class Test < ApplicationRecord
   scope :easy_level, -> { where(level: 0..1).order(created_at: :desc) }
   scope :average_level, -> { where(level: 2..4).order(created_at: :desc) }
   scope :difficult_level, -> { where(level: 5..Float::INFINITY).order(created_at: :desc) }
-  scope :categories, -> (category) { joins(:category).where("categories.title like ? ", category).  order(:title, :desc).pluck(:title) }
+  scope :categories, -> (category) { joins(:category).where("categories.title like ? ", category) }
+
+  def self.categories_desc_title(category)
+    categories(category).order(:title, :desc).pluck(:title)
+  end
 end
