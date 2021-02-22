@@ -1,33 +1,43 @@
 class QuestionsController < ApplicationController
   before_action :find_test, only: [:index, :new, :create]
-  before_action :find_question, only: [:show, :destroy]
+  before_action :find_question, only: [:show, :edit, :update, :destroy]
 
-  # rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    render plain: "All questions: \n#{@test.questions.inspect}"
-  end
-
-  def show
-    # byebug
-    # render plain: "Question: \n#{@question.inspect}"
-    # render plain: "Test: #{@test.title} \nQuestion: \n#{@question.inspect}"
+    redirect_to test_path(@test)
   end
 
   def new
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+
   def create
-    question = @test.questions.new(question_params)
-    if question.save
-      render plain: "Your question was successfully created: \n#{question.inspect}"
+    @question = @test.questions.new(question_params)
+    if @question.save
+      redirect_to test_path(@test)
     else
-      render plain: 'Invalid parameters.'
+      render "tests/show"
+    end
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to test_path(@question.test)
+    else
+      render :edit
     end
   end
 
   def destroy
     @question.destroy
+    redirect_to test_path(@question.test)
   end
   
 

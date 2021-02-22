@@ -5,6 +5,7 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find(params[:id])
+    @question = Question.new
   end
 
   def new
