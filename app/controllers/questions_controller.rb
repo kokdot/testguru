@@ -1,15 +1,17 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, expect: [:destroy]
+  before_action :find_test, only: [:index, :new, :create]
   before_action :find_question, only: [:show, :destroy]
 
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
+  # rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
     render plain: "All questions: \n#{@test.questions.inspect}"
   end
 
   def show
-    render plain: "Test: #{@test.title} \nQuestion: \n#{@question.inspect}"
+    # byebug
+    # render plain: "Question: \n#{@question.inspect}"
+    # render plain: "Test: #{@test.title} \nQuestion: \n#{@question.inspect}"
   end
 
   def new
