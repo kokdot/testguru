@@ -16,6 +16,7 @@
   </tr>
   <%= render @test.questions %>
 </table>
+<%= link_to 'New Question', new_test_question_path(@test) %>
 
-<%= render 'questions/form' %>
+<%#= render 'questions/form' %>
 
