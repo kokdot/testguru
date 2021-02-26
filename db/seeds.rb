@@ -24,5 +24,5 @@ Answer.create([
                 { body: 'б) Выведет: “Переменная: 25”', question_id: question3.id, correct: true },
                 { body: 'в) Будет выведена ошибка', question_id: question3.id, correct: false }
               ])
-UserTest.create( test_id: test.id, user_id: tom.id)
-UserTest.create( test_id: test.id, user_id: tim.id)
+TestPassage.create( test_id: test.id, user_id: tom.id)
+TestPassage.create( test_id: test.id, user_id: tim.id)
