@@ -1,1 +1,8 @@
 <h1>The <%= @test_passage.test.title %> Test was Completed!</h1>
+<p>Your percent right questions is <%= @percent %> </p>
+<% if  @percent >= 85 %>
+  <p style="color: green">Yor pass the test <%= @percent %> right questions</p>
+<% else  %>
+  <p style="color: red">Yor do not pass the test</p>
+  <% end %>
+<%= link_to "Back to list of tests", tests_path %>
