@@ -1,4 +1,5 @@
 class TestPassage < ApplicationRecord
+  SUCCESS = 85
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, foreign_key: 'question_id', class_name: 'Question', optional: true
@@ -10,12 +11,23 @@ class TestPassage < ApplicationRecord
     if correct_answer?(answer_ids)
       self.correct_questions += 1
     end
-    # self.current_question = next_question
     save!
   end
 
   def completed?
     current_question.nil?
+  end
+
+  def success?
+    result > SUCCESS
+  end
+
+  def result
+    correct_questions / test.questions.count * 100
+  end
+
+  def number_of_questions
+    test.questions.order(id: :asc).where('id < ?', question_id).count + 1
   end
 
 

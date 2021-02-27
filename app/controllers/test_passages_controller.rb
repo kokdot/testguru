@@ -2,13 +2,9 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result]
 
   def show
-    @count = session[:count] + 1
-    session[:count] = @count + 1
   end
   
   def result
-    @percent = @test_passage.correct_questions / @test_passage.test.questions.count * 100
-    session[:count] = 0
   end
 
   def update
