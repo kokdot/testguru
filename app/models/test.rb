@@ -1,9 +1,9 @@
 class Test < ApplicationRecord
   has_many :questions
-  has_many :user_tests
-  has_many :users, through: :user_tests, source: :user
+  has_many :test_passages
+  has_many :users, through: :test_passages#, source: :user
   belongs_to :category
-  belongs_to :author, foreign_key: "user_id" , class_name: "User"
+  belongs_to :author, foreign_key: "user_id" , class_name: "User", optional: true
   
   validates :title, presence: true
   validates :level, numericality: { only_integer: true }
