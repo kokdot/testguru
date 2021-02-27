@@ -1,5 +1,5 @@
 class TestPassage < ApplicationRecord
-  SUCCESS = 85
+  SUCCESS_PERCENT = 85
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, foreign_key: 'question_id', class_name: 'Question', optional: true
@@ -19,7 +19,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    result > SUCCESS
+    result > SUCCESS_PERCENT
   end
 
   def result
