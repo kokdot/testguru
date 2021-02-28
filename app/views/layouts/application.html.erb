@@ -10,9 +10,19 @@
   </head>
 
   <body>
-    <% if logged_in?%>
-      <p class='nav user'>Welcome, <b><%= current_user.email %></b> Guru</p>
-    <% end %>
+    <div id="navbar">
+      <p>
+        <%= link_to 'TestGuru', root_path %>
+        <%= link_to 'Sign up', signup_path %> | <%= link_to 'Login', login_path %>
+        <% if current_user %>
+           | <%= link_to 'Log out', session_path(current_user), method: :delete %></p>
+        <% end %>
+      </p>
+      <% if logged_in?%>
+        <p class='nav user'>Welcome, <b><%= current_user.email %></b> Guru</p>
+      <% end %>
+    </div>
+
     <%= yield %>
     <div id="futter">
       <hr>

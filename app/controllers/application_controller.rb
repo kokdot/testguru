@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
+    session[:url] = request.url
     unless current_user
       redirect_to login_path, alert: 'Are you a Guru? Verify your Email and Password, please.'
     end
