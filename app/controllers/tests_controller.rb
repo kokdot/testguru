@@ -35,9 +35,8 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.tests.push(@test)
-    redirect_to @user.test_passage(@test)
-    session[:count] = 0
+    current_user.tests.push(@test)
+    redirect_to current_user.test_passage(@test)
   end
 
   def destroy
@@ -46,10 +45,6 @@ class TestsController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.first
-  end
 
   def set_test
     @test = Test.find(params[:id])
