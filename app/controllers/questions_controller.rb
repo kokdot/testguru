@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to test_path(@test)
     else
-      render "tests/show"
+      render "admin/tests/new"
     end
   end
 
