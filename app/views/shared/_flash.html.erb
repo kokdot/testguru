@@ -1,3 +1,6 @@
 <% flash.each do |key, message| %>
+<% if key == 'notice' and message == 'Signed in successfully.' %>
+  <% message = "Привет #{current_user.first_name}!" %>
+<% end %>
 <%= content_tag :p, message, class: "flash #{key}" %>
 <% end %>
