@@ -1,0 +1,14 @@
+<h1>Tricky Tests</h1>
+<p>
+  <%= link_to 'New test', new_admin_test_path %>
+</p>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Level</th>
+    <th>Count of questions</th>
+    <th colspan="4">Actions</th>
+  </tr>
+  <%= render @tests %>
+</table>

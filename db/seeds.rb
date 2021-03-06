@@ -5,10 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-cat = Category.create(title: 'Ruby')q
-tom = User.create(name: 'Tom', email: 'tom@gmail.com')
-tim = User.create(name: 'Tim', email: 'tim@gmail.com')
-jhon = User.create(name: 'Jhon', email: 'jhon@gmail.com')
+cat = Category.create(title: 'Ruby')
+jhon = User.find_by(email: 'jhon@gmail.com')
 test = Test.create!(title: 'Основы языка Ruby.', level: 1, category_id: cat.id, user_id: jhon.id)
 question1 = Question.create(body: 'Чем отличается puts от print:', test_id: test.id)
 question2 = Question.create(body: 'Какой метод позволяет перевести строку в нижний регистр:', test_id: test.id)
@@ -24,5 +22,3 @@ Answer.create([
                 { body: 'б) Выведет: “Переменная: 25”', question_id: question3.id, correct: true },
                 { body: 'в) Будет выведена ошибка', question_id: question3.id, correct: false }
               ])
-TestPassage.create( test_id: test.id, user_id: tom.id)
-TestPassage.create( test_id: test.id, user_id: tim.id)

@@ -1,14 +1,18 @@
-require 'digest/sha1'
-
 class User < ApplicationRecord
+  
+  devise :database_authenticatable, 
+          :registerable,
+          :recoverable, 
+          :rememberable, 
+          :trackable,
+          :validatable,
+          :confirmable
 
   # include Auth
 
   has_many :test_passages
   has_many :tests, through: :test_passages
   has_many :author_tests, class_name: "Test", foreign_key: :user_id
-
-  has_secure_password
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
@@ -20,5 +24,7 @@ class User < ApplicationRecord
     test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 
-  
+  def admin?
+    self.class == Admin
+  end
 end

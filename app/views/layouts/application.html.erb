@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Testguru</title>
+    <title>Admin Panel | Testguru</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,25 +10,11 @@
   </head>
 
   <body>
-    <div id="navbar">
-      <p>
-        <%= link_to 'TestGuru', root_path %>
-        <%= link_to 'Sign up', signup_path %> | <%= link_to 'Login', login_path %>
-        <% if current_user %>
-           | <%= link_to 'Log out', session_path(current_user), method: :delete %></p>
-        <% end %>
-      </p>
-      <% if logged_in?%>
-        <p class='nav user'>Welcome, <b><%= current_user.email %></b> Guru</p>
-      <% end %>
-    </div>
+    <%= render 'layouts/nav' %>
+
+    <%= render 'shared/flash' %>
 
     <%= yield %>
-    <div id="futter">
-      <hr>
-      <p><%= year %>год <%= github_url('Сытин Николай Борисович', 'https://github.com/kokdot') %> </p>
-      <p>Данный проект реализует учебную задачу по тестированию пользователей в различных областях знаний.</p>
-      <p><%= link_to 'Учебный проект в онлайн-школе Thinknetica', "http://thinknetica.com", target: "_blank" %></p>
-    </div>
+    <%= render 'layouts/futter' %>
   </body>
 </html>
