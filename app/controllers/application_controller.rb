@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    if resource.class == Admin
+    if current_user.admin?
       admin_tests_path
-    elsif resource.class == User
+    else
       root_path 
     end
   end
