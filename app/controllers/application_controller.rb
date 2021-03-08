@@ -2,13 +2,21 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   before_action :set_locale
+  before_action :set_url
+
+  
+  
+  protected
+
+  def set_url
+    if I18n.locale != I18n.default_locale
+    default_url_options
+    end
+  end
 
   def default_url_options
     { lang: I18n.locale }
   end
-
-
-  protected
 
   def after_sign_in_path_for(resource)
     current_user.admin? ? admin_tests_path : root_path 

@@ -42,15 +42,25 @@ en:
         title: "Title"
         level: "Level"
         category_id: "Category"
+    select:
+      prompt: "Please select"
   shared:
     errors:
       header: 
         one: "%{count} error detected"
         other: "%{count} errors detected"
 
-  test:
+  tests:
     index:
       header: "Tricky Tests"
+      new: "Create New Test"
+      id: "Id"
+      title: "Title"
+      level: "Level"
+      count: "Count of questions"
+      action: "Action"
+    test:
+      start: "Start"
   
   test_passages:
     result:
@@ -58,10 +68,36 @@ en:
 
   admin:
     tests:
+      test:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
       create:
         success: "Test was successfully created."
       index:
         header: "Tricky Tests"
+        new: "Create New Test"
+        id: "Id"
+        title: "Title"
+        level: "Level"
+        count: "Count of questions"
+        action: "Action"
+      new: 
+        header: "Create New Test"
+    nav:
+      header: "Admin Panel"
+      logout: "Logout"
+      welcome: "Welcom"
+
   tests_mailer:
     complited_test:
       subject: "You just complited the TestGuru test!"
+
+  layouts:
+    admin:
+      header: "Admin Panel"
+      sign_up: 'Sign up'
+      login: "Login"
+    nav:
+      welcome: "Welcom"
+      logout: "Logout"

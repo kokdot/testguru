@@ -1,5 +1,5 @@
 ru:
-  hello: 'Привет мир'
+  hello: "Привет мир"
 
   helpers:
     submit:
@@ -11,17 +11,28 @@ ru:
         title: "Название"
         level: "Уровень"
         category_id: "Категория"
+    select:
+      prompt: "Пожалуйста выберите"
+
   shared:
     errors:
-      header: 
+      header:
         few: "Обнаружено %{count} ошибки"
         many: "Обнаружено %{count} ошибок"
         one: "Обнаружена %{count} ошибка"
         other: "Обнаружено %{count} ошибки"
 
-  test:
+  tests:
     index:
       header: "Доступные Тесты"
+      new: "Создать Новый Тест"
+      id: "Идентификатор"
+      title: "Заголовок"
+      level: "Уровень"
+      count: "Количество вопросов"
+      action: "Действие"
+    test:
+      start: "Старт"
 
   test_passages:
     result:
@@ -29,11 +40,36 @@ ru:
 
   admin:
     tests:
+      test:
+        show: "Показать"
+        edit: "Редактировать"
+        delete: "Удалить"
       create:
         success: "Тест успешно создан."
       index:
         header: "Доступные Тесты"
+        new: "Создать Новый Тест"
+        id: "Идентификатор"
+        title: "Заголовок"
+        level: "Уровень"
+        count: "Количество вопросов"
+        action: "Действие"
+      new:
+        header: "Создайте Новый Тест"
+    nav:
+      header: "Панель Администратора"
+      logout: "Выйти"
+      welcome: "Добро Пожаловать"
 
   tests_mailer:
     complited_test:
       subject: "Вы успешно завершили тест на TestGuru!"
+
+  layouts:
+    admin:
+      header: "Панель Администратора"
+      sign_up: "Регистрация"
+      login: "Вход"
+    nav:
+      welcome: "Добро Пожаловать"
+      logout: "Выйти"
