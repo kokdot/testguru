@@ -98,6 +98,10 @@ en:
       header: "Admin Panel"
       sign_up: 'Sign up'
       login: "Login"
+  shared:
     nav:
       welcome: "Welcom"
       logout: "Logout"
+      sign_up: "sign up"
+      login: "Login"
+      admin: "Admin Panel"
