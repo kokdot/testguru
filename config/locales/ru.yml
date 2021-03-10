@@ -14,14 +14,6 @@ ru:
     select:
       prompt: "Пожалуйста выберите"
 
-  shared:
-    errors:
-      header:
-        few: "Обнаружено %{count} ошибки"
-        many: "Обнаружено %{count} ошибок"
-        one: "Обнаружена %{count} ошибка"
-        other: "Обнаружено %{count} ошибки"
-
   tests:
     index:
       header: "Доступные Тесты"
@@ -77,4 +69,10 @@ ru:
       sign_up: "Регистрация"
       login: "Вход"
       admin: "Панель Администратора"
+    errors:
+      header:
+        few: "Обнаружено %{count} ошибки"
+        many: "Обнаружено %{count} ошибок"
+        one: "Обнаружена %{count} ошибка"
+        other: "Обнаружено %{count} ошибки"
 

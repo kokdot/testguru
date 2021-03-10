@@ -44,11 +44,6 @@ en:
         category_id: "Category"
     select:
       prompt: "Please select"
-  shared:
-    errors:
-      header: 
-        one: "%{count} error detected"
-        other: "%{count} errors detected"
 
   tests:
     index:
@@ -105,3 +100,7 @@ en:
       sign_up: "sign up"
       login: "Login"
       admin: "Admin Panel"
+    errors:
+      header: 
+        one: "%{count} error detected"
+        other: "%{count} errors detected"
