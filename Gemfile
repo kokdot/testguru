@@ -31,6 +31,10 @@ gem 'devise', '~> 4.0'
 # LOCALIZATION
 gem 'rails-i18n'
 
+#UI
+gem 'jquery-rails'
+gem 'bootstrap'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

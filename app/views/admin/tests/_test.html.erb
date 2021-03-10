@@ -1,9 +1,9 @@
 <tr>
-  <td><%= test.id %></td>
+  <th  scope="row"><%= test.id %></th>
   <td><%= test.title %></td>
   <td><%= test_level(test) %></td>
   <td><%= test.questions.count %></td>
-  <td><%= link_to t('.show'), admin_test_path(test) %></td>
-  <td><%= link_to t('.edit'), edit_admin_test_path(test) %></td>
-  <td><%= link_to t('.delete'), admin_test_path(test), method: :delete, data: { confirm: 'A you sure?' } %></td>
+  <td><%= link_to t('.show'), admin_test_path(test), class: "btn btn-outline-primary" %></td>
+  <td><%= link_to t('.edit'), edit_admin_test_path(test), class: "btn btn-outline-secondary" %></td>
+  <td><%= link_to t('.delete'), admin_test_path(test), method: :delete, data: { confirm: 'A you sure?' }, class: "btn btn-outline-danger" %></td>
 </tr>

@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_in_path_for(resource)
-    current_user.admin? ? admin_tests_path : root_path 
-  end
+  # def after_sign_in_path_for(resource)
+  #   current_user.admin? ? admin_tests_path : root_path 
+  # end
   
   def configure_permitted_parameters
      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :remember_me) }
