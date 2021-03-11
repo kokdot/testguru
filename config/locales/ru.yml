@@ -29,6 +29,9 @@ ru:
   test_passages:
     result:
       header: "Тест %{title} успешно завершен!"
+    gist:
+      success: "Gist успешно сохранен!"
+      failure: "Во время сохраненеия gist произошла ошибка."
 
   admin:
     tests:
@@ -75,4 +78,13 @@ ru:
         many: "Обнаружено %{count} ошибок"
         one: "Обнаружена %{count} ошибка"
         other: "Обнаружено %{count} ошибки"
-
+  gist_question_service:
+    gist_params:
+      description: "Это вопрос о %{title} из TestGuru"
+  gists:
+    index:
+      header: "Список Гистов"
+      id: "Идентификатор"
+      question: "Вопрос"
+      url: "Путь"
+      email: "Почта"

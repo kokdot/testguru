@@ -60,6 +60,9 @@ en:
   test_passages:
     result:
       header: "The %{title} Test was Completed!"
+    gist:
+      success: "Gist was successfully created!"
+      failure: "An error occurred while saving gist."
 
   admin:
     tests:
@@ -104,3 +107,14 @@ en:
       header: 
         one: "%{count} error detected"
         other: "%{count} errors detected"
+  # services:
+  gist_question_service:
+    gist_params:
+      description: "A question about %{title} from TestGuru"       
+  gists:
+    index:
+      header: "List of Gists"
+      id: "ID"
+      question: "Question"
+      url: "URL"
+      email: "Email"
