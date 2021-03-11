@@ -1,6 +1,6 @@
 <tr>
   <th  scope="row"><%= gist.id %></th>
-  <td><%= gist.question %></td>
+  <td><%= link_to gist.question, admin_question_path(@quesiton) %></td>
   <td><%= gist.url %></td>
   <td><%= gist.email %></td>
 </tr>

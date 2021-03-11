@@ -19,10 +19,11 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
+    @question = @test_passage.current_question
+    result = GistQuestionService.new(@question).call
     # byebug
     if result.url.present?
-      Gist.create(question: @test_passage.current_question.body.truncate(25), url: result[:html_url], email: current_user.email)
+      Gist.create(question: @question.body.truncate(25), url: result[:html_url], email: current_user.email)
     end
     flash_options = if result.url
       { notice: t('.success') + "  #{ helpers.link_to( 'gist', result[:html_url], html_options: { target: '_blank' }) }" }
