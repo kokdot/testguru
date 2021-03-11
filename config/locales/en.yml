@@ -86,6 +86,7 @@ en:
       header: "Admin Panel"
       logout: "Logout"
       welcome: "Welcom"
+      gist: "Gist"
 
   tests_mailer:
     complited_test:

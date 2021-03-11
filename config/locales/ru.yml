@@ -55,6 +55,7 @@ ru:
       header: "Панель Администратора"
       logout: "Выйти"
       welcome: "Добро Пожаловать"
+      gist: "Гист"
 
   tests_mailer:
     complited_test:
