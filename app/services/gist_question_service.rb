@@ -13,10 +13,6 @@ class GistQuestionService
     @client.last_response.status.to_s.match(/2\d{2}/)
   end
 
-  def client
-    @client
-  end
-
   private
 
   def gist_params

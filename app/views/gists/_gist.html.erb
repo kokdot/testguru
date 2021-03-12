@@ -1,6 +1,6 @@
 <tr>
   <th  scope="row"><%= gist.id %></th>
-  <td><%= link_to gist.question, admin_question_path(gist.question) %></td>
+  <td><%= link_to gist.question.body.truncate(25), admin_question_path(gist.question) %></td>
   <td><%= gist.url %></td>
-  <td><%= gist.email %></td>
+  <td><%= gist.user.email %></td>
 </tr>
