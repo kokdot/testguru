@@ -3,7 +3,6 @@ class GistQuestionService
     @question = question
     @test = @question.test
     @client = client || Octokit::Client.new(access_token: ENV['ACCESS_TOKEN'])
-    # @client = client || GitHubClient.new
   end
 
   def call
@@ -11,7 +10,11 @@ class GistQuestionService
   end
 
   def success?
-    @client.last_reponse.status.match(/2\d{2}/)
+    @client.last_response.status.to_s.match(/2\d{2}/)
+  end
+
+  def client
+    @client
   end
 
   private
