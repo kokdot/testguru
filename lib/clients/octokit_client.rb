@@ -1,6 +1,5 @@
 class OctokitClient
   ROOT_ENDPOINT = 'https://api.github.com'
-  # ACCESS_TOKEN = '40aa59457816d6a5990eebca5288e700c62bf4ad'
 
   def initialize
     @http_client = setup_http_client
