@@ -4,6 +4,8 @@ class CreateGists < ActiveRecord::Migration[5.2]
       t.string :question
       t.string :url
       t.string :email
+      t.references :question, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
