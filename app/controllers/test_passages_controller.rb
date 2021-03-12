@@ -20,15 +20,13 @@ class TestPassagesController < ApplicationController
 
   def gist
     @question = @test_passage.current_question
-    result = GistQuestionService.new(@question).call
-    # byebug
-    if result.url.present?
-      Gist.create(question: @question.body.truncate(25), url: result[:html_url], email: current_user.email)
-    end
-    flash_options = if result.url
-      { notice: t('.success') + "  #{ helpers.link_to( 'gist', result[:html_url], html_options: { target: '_blank' }) }" }
+    client = GistQuestionService.new(@question)
+    client.call
+    if result.success?
+      @question.gists.create(url: client.last_reponse[:html_url], user_id: current_user.id)
+      flash_options = { notice: t('.success') + "  #{ helpers.link_to( 'gist', result[:html_url], html_options: { target: '_blank' }) }" }
     else
-      { alert: t('.failure') }
+      flash_options = { alert: t('.failure') }
     end
     redirect_to @test_passage, flash_options
   end

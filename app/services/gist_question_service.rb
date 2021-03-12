@@ -7,10 +7,11 @@ class GistQuestionService
   end
 
   def call
-    @result = @client.create_gist(gist_params)
+    @client.create_gist(gist_params)
   end
-  def client
-    @client
+
+  def success?
+    @client.last_reponse.status.match(/2\d{2}/)
   end
 
   private

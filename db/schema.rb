@@ -28,9 +28,7 @@ ActiveRecord::Schema.define(version: 2021_03_12_074703) do
   end
 
   create_table "gists", force: :cascade do |t|
-    t.string "question"
     t.string "url"
-    t.string "email"
     t.integer "question_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
