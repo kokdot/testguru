@@ -18,5 +18,6 @@ module Testguru
     config.time_zone = "Asia/Yekaterinburg"
     config.i18n.default_locale = :ru
     # VERSION = '0.1.0'!
+    config.autoload_paths << "#{Rails.root}/lib/clients"
   end
 end
