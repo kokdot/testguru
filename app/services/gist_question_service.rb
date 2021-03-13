@@ -10,7 +10,7 @@ class GistQuestionService
   end
 
   def success?
-    @client.last_response.status.to_s.match(/2\d{2}/)
+    [200, 201, 202].include?(@client.last_response.status)
   end
 
   private
