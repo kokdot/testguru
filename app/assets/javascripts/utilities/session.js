@@ -9,6 +9,11 @@ document.addEventListener('turbolinks:load', function() {
   input_val.addEventListener('input', updateValue)
 
   function updateValue(e) {
+    if (input_val.value === '') {
+      caushion_green.classList.add('hide')
+      caushion_red.classList.add('hide')
+      return
+    }
     if (compareVal(compare_val, input_val)) {
       caushion_green.classList.remove('hide')
       caushion_red.classList.add('hide')
