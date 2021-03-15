@@ -119,3 +119,8 @@ en:
       question: "Question"
       url: "URL"
       email: "Email"
+  devise:
+    registrations:
+      new:
+        match: 'match'
+        mismatch: 'mismatch'

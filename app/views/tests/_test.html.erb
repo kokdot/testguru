@@ -1,6 +1,6 @@
 <tr>
-  <th  scope="row"><%= test.id %></th>
-  <td><%= test.title %></td>
+  <td><%= test.id %></td>
+  <td class="sort"><%= test.title %></td>
   <td><%= test_level(test) %></td>
   <td><%= test.questions.count %></td>
   <td><%= button_to t('.start'), start_test_path(test), class: "btn btn-outline-primary" %></td>

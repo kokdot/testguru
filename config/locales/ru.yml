@@ -89,3 +89,8 @@ ru:
       question: "Вопрос"
       url: "Путь"
       email: "Почта"
+  devise:
+    registrations:
+      new:
+        match: 'совпадает'
+        mismatch: 'не совпадает'
