@@ -14,7 +14,7 @@ document.addEventListener('turbolinks:load', function() {
       caushion_red.classList.add('hide')
       return
     }
-    if (compareVal(compare_val, input_val)) {
+    if (compareVal(compare_val.value, input_val.value)) {
       caushion_green.classList.remove('hide')
       caushion_red.classList.add('hide')
     } else {
@@ -26,17 +26,11 @@ document.addEventListener('turbolinks:load', function() {
 })
 
 function compareVal(val1, val2) {
-  arr1 = val1.value.split("")
-  arr2 = val2.value.split("")
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1[i] === arr2[i]) { 
-      continue
-    } else { return false }
-  }
-  if (arr2.length > arr1.length) {
-    return false
-  } else {
-    return true
-  }
+  val1 = val1.substring(0, val2.length)
 
+  if (val2 == val1) {
+    return true
+  } else {
+    return false
+  }
 }
