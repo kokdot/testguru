@@ -26,7 +26,7 @@ document.addEventListener('turbolinks:load', function() {
 })
 
 function compareVal(val1, val2) {
-  val1 = val1.substring(0, val2.length)
+  // val1 = val1.substring(0, val2.length)
 
   if (val2 == val1) {
     return true

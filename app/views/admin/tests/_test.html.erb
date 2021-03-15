@@ -2,6 +2,7 @@
   <td><%= test.id %></td>
   <td class="sort">
     <%= test.title %>
+    <%# byebug %>
     <%= render 'form_inline', test: test %>
   </td>
   <td><%= test_level(test) %></td>
