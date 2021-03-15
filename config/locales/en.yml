@@ -80,6 +80,8 @@ en:
         level: "Level"
         count: "Count of questions"
         action: "Action"
+      form_inline:
+        submit: "OK"
       new: 
         header: "Create New Test"
     nav:
