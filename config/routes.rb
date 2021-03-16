@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   root to: 'tests#index'
+  get '/admin/tests/:id/update_inline', to: 'admin/tests#index'
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
