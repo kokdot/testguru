@@ -2,6 +2,9 @@
     <p>
       <%= link_to t('.new'), new_admin_test_path, class: "btn btn-primary" %>
     </p>
+
+      <%= render 'shared/errors', resource: @test %>
+
     <table class= "table">
       <tr>
         <th scope="col"><%= t('.id') %></th>
@@ -14,6 +17,5 @@
         <th scope="col"><%= t('.count') %></th>
         <th scope="col" colspan="3"><%= t('.action') %></th>
       </tr>
-      <%# byebug %>
       <%= render @tests %>
     </table>

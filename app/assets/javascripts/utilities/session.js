@@ -6,7 +6,9 @@ document.addEventListener('turbolinks:load', function() {
   var compare_val = document.querySelector('.compare')
   var input_val = document.querySelector('.input')
   
-  input_val.addEventListener('input', updateValue)
+  if (input_val) {
+    input_val.addEventListener('input', updateValue)
+  }
 
   function updateValue(e) {
     if (input_val.value === '') {
@@ -26,8 +28,6 @@ document.addEventListener('turbolinks:load', function() {
 })
 
 function compareVal(val1, val2) {
-  // val1 = val1.substring(0, val2.length)
-
   if (val2 == val1) {
     return true
   } else {
