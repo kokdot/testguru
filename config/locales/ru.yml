@@ -49,6 +49,8 @@ ru:
         level: "Уровень"
         count: "Количество вопросов"
         action: "Действие"
+      form_inline:
+        submit: "OK"
       new:
         header: "Создайте Новый Тест"
     nav:

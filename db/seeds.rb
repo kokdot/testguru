@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 cat = Category.create(title: 'Ruby')
-jhon = User.find_by(email: 'jhon@gmail.com')
+jhon = User.create(last_name: 'jhon', first_name: 'jhon', type: "Admin", email: 'jhon@gmail.com', password: 'pfqrf2008', confirmed_at: Time.now)
 test = Test.create!(title: 'Основы языка Ruby.', level: 1, category_id: cat.id, user_id: jhon.id)
 question1 = Question.create(body: 'Чем отличается puts от print:', test_id: test.id)
 question2 = Question.create(body: 'Какой метод позволяет перевести строку в нижний регистр:', test_id: test.id)

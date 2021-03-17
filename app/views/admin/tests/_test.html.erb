@@ -1,9 +1,21 @@
 <tr>
-  <td><%= test.id %></td>
-  <td class="sort"><%= test.title %></td>
-  <td><%= test_level(test) %></td>
-  <td><%= test.questions.count %></td>
-  <td><%= link_to t('.show'), admin_test_path(test), class: "btn btn-outline-primary" %></td>
-  <td><%= link_to t('.edit'), edit_admin_test_path(test), class: "btn btn-outline-secondary" %></td>
-  <td><%= link_to t('.delete'), admin_test_path(test), method: :delete, data: { confirm: 'A you sure?' }, class: "btn btn-outline-danger" %></td>
+  <td class="align-middle"><%= test.id %></td>
+  <td class="sort align-middle">
+    <%#= test.title %>
+    <%= content_tag :span, test.title, class: 'test-title', data: { test_id: test.id } %>
+    <%= render 'form_inline', test: test == @test ? @test : test %>
+  </td>
+  <td class="align-middle"><%= test_level(test) %></td>
+  <td class="align-middle"><%= test.questions.count %></td>
+  <td class="align-middle"><%= link_to t('.show'), admin_test_path(test), class: "btn btn-outline-primary" %></td>
+  <td class="align-middle"><%= link_to t('.edit'), 
+                              edit_admin_test_path(test), 
+                              data: { test_id: test.id },
+                              class: "btn btn-outline-secondary form-inline-link" %>
+  </td>
+  <td class="align-middle"><%= link_to t('.delete'), 
+                              admin_test_path(test), 
+                              method: :delete, data: { confirm: 'A you sure?' }, 
+                              class: "btn btn-outline-danger" %>
+  </td>
 </tr>
