@@ -1,6 +1,6 @@
 class Admin::TestsController < Admin::BaseController
-  before_action :set_tests, only: %i[index update_inline]
-  before_action :set_test, only: [:edit, :show, :update, :destroy, :start, :update_inline]
+  before_action :set_tests, only: [:index, :update_inline]
+  before_action :set_test, except: [:index]
 
   def index
   end
