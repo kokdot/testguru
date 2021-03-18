@@ -126,3 +126,7 @@ en:
       new:
         match: 'match'
         mismatch: 'mismatch'
+  feed_backs:
+    new:
+      header: "Please, puts your feedbacks here: "
+      send: "Send"

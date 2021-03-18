@@ -1,0 +1,10 @@
+<h1><%= t('.header') %></h1>
+<%= form_with url: feed_backs_path, local: true do |form|%>
+
+  <p>
+    <%= form.text_area :body, rows: 8, cols: 60 %>
+  </p>
+  <p>
+    <%= form.submit t('.send') %>
+  </p>
+  <% end %>
