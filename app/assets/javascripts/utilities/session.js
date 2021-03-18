@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function() {
-  const caushion_green = document.querySelector('.caushion-green')
-  const caushion_red = document.querySelector('.caushion-red')
+  var caushion_green = document.querySelector('.caushion-green')
+  var caushion_red = document.querySelector('.caushion-red')
 
   
   var compare_val = document.querySelector('.compare')
