@@ -9,6 +9,7 @@
         <%= link_to t('.admin'), admin_tests_path, class: "btn btn-outline-warning" %>
         <%= link_to t('.gist'), gists_path, class: "btn btn-outline-warning" %>
       <% end %>
+      <%= link_to 'feedback', new_feed_back_path, class: "btn btn-outline-success" %>
     <% else %>
       <%= link_to t('.sign_up'),  new_user_registration_path, class: "btn btn-outline-success" %> | 
       <%= link_to t('.login'), new_user_session_path, class: "btn btn-outline-success" %>
