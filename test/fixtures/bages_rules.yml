@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  bage: one
+  condition: one
+
+two:
+  title: MyString
+  bage: two
+  condition: two

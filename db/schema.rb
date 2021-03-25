@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_074703) do
+ActiveRecord::Schema.define(version: 2021_03_25_054559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,42 @@ ActiveRecord::Schema.define(version: 2021_03_12_074703) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "bages", force: :cascade do |t|
+    t.string "url_picture"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bages_rules", force: :cascade do |t|
+    t.string "title"
+    t.bigint "bage_id"
+    t.bigint "condition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bage_id"], name: "index_bages_rules_on_bage_id"
+    t.index ["condition_id"], name: "index_bages_rules_on_condition_id"
+  end
+
+  create_table "bages_users", force: :cascade do |t|
+    t.bigint "test_id"
+    t.bigint "user_id"
+    t.bigint "bages_rule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bages_rule_id"], name: "index_bages_users_on_bages_rule_id"
+    t.index ["test_id"], name: "index_bages_users_on_test_id"
+    t.index ["user_id"], name: "index_bages_users_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_03_12_074703) do
     t.integer "correct_questions", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "success", default: false
     t.index ["question_id"], name: "index_test_passages_on_question_id"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
@@ -98,4 +133,9 @@ ActiveRecord::Schema.define(version: 2021_03_12_074703) do
     t.index ["type"], name: "index_users_on_type"
   end
 
+  add_foreign_key "bages_rules", "bages"
+  add_foreign_key "bages_rules", "conditions"
+  add_foreign_key "bages_users", "bages_rules"
+  add_foreign_key "bages_users", "tests"
+  add_foreign_key "bages_users", "users"
 end
