@@ -1,0 +1,19 @@
+<%= form_with model: [:admin, @bages_rule], local: true do |form| %>
+  <%= render 'shared/errors', resource: @bages_rule  %>
+  
+  <p>
+    <%= form.label :rule %>
+    <%= form.text_field :rule %>
+  </p>
+
+  <p>
+    <%= form.label :bage_id %>: 
+    <%= form.collection_select :bage_id, Bage.all, :id, :title, prompt: true  %>
+  </p>
+
+  <p>
+    <%= form.label :condition_id %>: 
+    <%= form.collection_select :condition_id, Condition.all, :id, :title, prompt: true  %>
+  </p>
+  <%= form.submit %>
+<% end %>

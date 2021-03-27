@@ -89,6 +89,65 @@ en:
       logout: "Logout"
       welcome: "Welcom"
       gist: "Gist"
+    bages:
+      create:
+        success: "Bage create successfuly"
+      edit: 
+        header: "Edit bage: " 
+      index:
+        id: 'Id'
+        title: "Title"
+        action: "Action"
+        new: "New Bage"
+        header: "All Bages"
+        url_picture: "Link to Picture"
+      bage: 
+        url_picture: "Link to Picture"
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+      new: 
+        header: "New Bage"
+    conditions: 
+      create:
+          success: "Condition create successfuly"
+      index:
+        id: 'Id'
+        title: "Title"
+        action: "Action"
+        new: "New Condition"
+        header: "List Conditions"
+        description: "Description"
+      condition:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+      new: 
+        header: "New Condition"
+    bages_rules: 
+      create:
+          success: "Rule create successfuly"
+      index:
+        header: "List rules for bage award"
+        new: "New rule"
+        id: 'Id'
+        rule: "Rule"
+        bage_id: "Bage title"
+        condition_id: "Condition title"
+        action: "Action"
+      bages_rule:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+      new: 
+        header: "New rule"
+    bages_users:
+      index:
+        header: "List of awards for:"
+        bage: "Bage title"
+        url_picture: "Bage's picture link"
+        test: "Test title"
+        date: "Date of event"
 
   tests_mailer:
     complited_test:

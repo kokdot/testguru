@@ -1,8 +1,14 @@
 class TestPassage < ApplicationRecord
   SUCCESS_PERCENT = 85
+
+  has_many :bages_users, dependent: :destroy
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, foreign_key: 'question_id', class_name: 'Question', optional: true
+
+  scope :levels_user, -> (level) { where(test_success: true, user_id: current_user, test_id: Test.levels(level)).pluck(:test_id).uniq }
+  scope :categories_user, -> (category) { where(test_success: true, user_id: current_user, test_id: Test.categories(category)).pluck(:test_id).uniq }
+  scope :test_attempt, -> (test_id) { where(test_success: true, user_id: current_user, test_id: test_id }
 
   before_validation :before_validation_set_first_question, on: :create
   after_validation :after_validation_next_question, on: :update
@@ -12,6 +18,10 @@ class TestPassage < ApplicationRecord
       self.correct_questions += 1
     end
     save!
+  end
+
+  def first_attempt?
+    Test.where(id: test_id).count == 1
   end
 
   def completed?
@@ -39,7 +49,10 @@ class TestPassage < ApplicationRecord
 
   def after_validation_next_question
     self.current_question = next_question
-    # save
+    if !next_question && success?
+      self.success_test = true
+      save!
+    end
   end
 
   def correct_answer?(answer_ids)

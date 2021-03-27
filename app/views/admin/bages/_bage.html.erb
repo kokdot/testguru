@@ -1,0 +1,18 @@
+<tr>
+  <td class="align-middle"><%= bage.id %></td>
+  <td class="sort align-middle">
+    <%= bage.title %>
+  </td>
+  <td class="align-middle"><%= link_to t('.url_picture'), bage.url_picture %></td>
+  
+  <td class="align-middle"><%= link_to t('.show'), admin_bage_path(bage), class: "btn btn-outline-primary" %></td>
+  <td class="align-middle"><%= link_to t('.edit'), 
+                              edit_admin_bage_path(bage), 
+                              class: "btn btn-outline-secondary form-inline-link" %>
+  </td>
+  <td class="align-middle"><%= link_to t('.delete'), 
+                              admin_bage_path(bage), 
+                              method: :delete, data: { confirm: 'A you sure?' }, 
+                              class: "btn btn-outline-danger" %>
+  </td>
+</tr>

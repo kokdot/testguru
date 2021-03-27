@@ -1,0 +1,18 @@
+<tr>
+  <td class="align-middle"><%= condition.id %></td>
+  <td class="sort align-middle">
+    <%= condition.title %>
+  </td>
+  <td class="align-middle"><%= condition.description %></td>
+  
+  <td class="align-middle"><%= link_to t('.show'), admin_condition_path(condition), class: "btn btn-outline-primary" %></td>
+  <td class="align-middle"><%= link_to t('.edit'), 
+                              edit_admin_condition_path(condition), 
+                              class: "btn btn-outline-secondary form-inline-link" %>
+  </td>
+  <td class="align-middle"><%= link_to t('.delete'), 
+                              admin_condition_path(condition), 
+                              method: :delete, data: { confirm: 'A you sure?' }, 
+                              class: "btn btn-outline-danger" %>
+  </td>
+</tr>

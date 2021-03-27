@@ -1,0 +1,21 @@
+<h1><%= t('.header') %></h1>
+<p>
+  <%= link_to t('.new'), new_admin_bages_rule_path, class: "btn btn-primary" %>
+</p>
+
+  <%= render 'shared/errors', resource: @bages_rule  %>
+
+<table class= "table">
+  <tr>
+    <th scope="col"><%= t('.id') %></th>
+    <th scope="col", class="sort-by-title pointer">
+      <%= t('.rule') %>
+      <%= octicon 'arrow-up', class: 'text-success hide' %>
+      <%= octicon 'arrow-down', class: 'text-success hide' %>
+    </th>
+    <th scope="col"><%= t('.bage_id') %></th>
+    <th scope="col"><%= t('.condition_id') %></th>
+    <th scope="col" colspan="3"><%= t('.action') %></th>
+  </tr>
+  <%= render @bages_rules %>
+</table>

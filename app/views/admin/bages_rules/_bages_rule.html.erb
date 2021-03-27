@@ -1,0 +1,19 @@
+<tr>
+  <td class="align-middle"><%= bages_rule.id %></td>
+  <td class="sort align-middle">
+    <%= bage.rule %>
+  </td>
+  <td class="align-middle"><%= bages_rule.bage.title %></td>
+  <td class="align-middle"><%= bages_rule.condition.title %></td>
+
+  <td class="align-middle"><%= link_to t('.show'), admin_bages_rule_path(bages_rule), class: "btn btn-outline-primary" %></td>
+  <td class="align-middle"><%= link_to t('.edit'), 
+                              edit_admin_bages_rule_path(bages_rule), 
+                              class: "btn btn-outline-secondary form-inline-link" %>
+  </td>
+  <td class="align-middle"><%= link_to t('.delete'), 
+                              admin_bages_rule_path(bages_rule), 
+                              method: :delete, data: { confirm: 'A you sure?' }, 
+                              class: "btn btn-outline-danger" %>
+  </td>
+</tr>

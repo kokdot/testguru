@@ -58,6 +58,68 @@ ru:
       logout: "Выйти"
       welcome: "Добро Пожаловать"
       gist: "Гист"
+    bages: 
+      create:
+        success: "Бейдж успешно создан"
+      edit: 
+        header: "Отредактируйте Бейдж: "
+      index:
+        id: 'Идентификатор'
+        title: "Название"
+        action: "Действие"
+        new: "Новый Бейдж"
+        header: "Все Бейджи"
+        url_picture: "Ссылка на картинку"
+      bage: 
+        url_picture: "Ссылка на картинку"
+        show: "Показать"
+        edit: "Редактировать"
+        delete: "Удалить"
+      new: 
+        header: "Новый Бейдж"
+    conditions: 
+      create:
+        success: "Критерий успешно создан"
+      index:
+        id: 'Идентификатор'
+        title: "Название"
+        action: "Действие"
+        new: "Новый Критерий"
+        header: "Список Критериев"
+        description: "Описание"
+      condition: 
+        show: "Показать"
+        edit: "Редактировать"
+        delete: "Удалить"
+      new: 
+        header: "Новый Критерий"
+    bages_rules: 
+      create:
+        success: "Правило  успешно создано"
+      index:
+        header: "Список правил присвоения бейджей"
+        new: "Новое правило"
+        id: 'Идентификатор'
+        rule: "Правило"
+        bage_id: "Название Бейджа"
+        condition_id: "Название критерия"
+        action: "Действие"
+      bages_rule:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+      new: 
+        header: "Новое правило"
+    bages_users:
+      index:
+        header: "Список наград для: "
+        bage: "Название Бейджа"
+        url_picture: "Сылка на катринку"
+        test: "Название теста"
+        date: "Дата прохождения" 
+
+
+
 
   tests_mailer:
     complited_test:

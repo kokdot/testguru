@@ -37,3 +37,17 @@ Answer.create([
                 { body: 'б) Выведет: “Переменная: 25”', question_id: question33.id, correct: true },
                 { body: 'в) Будет выведена ошибка', question_id: question33.id, correct: false }
               ])
+
+bage1 = Bage.create(title: 'Лучший по професии', url_picture: 'https://ibb.co/30Z0pcv')
+bage2 = Bage.create(title: 'Самый быстрый', url_picture: 'https://ibb.co/MRq2MCj')
+bage3 = Bage.create(title: 'Полиглот', url_picture: 'https://ibb.co/HPfddb2')
+
+condition1 = Condition.create(title: 'За прохождение теста с первого раза', description: 'Основы языка Ruby.')
+condition2 = Condition.create(title: 'За прохождение всех тестов уровня', description: '1')
+condition3 = Condition.create(title: 'За прохождение всех тестов категории', description: 'Ruby')
+
+BagesRule.create([
+                { rule: 'first_attempt_some', bage_id: bage1.id, condition_id: condition1 },
+                { rule: 'level', bage_id: bage2.id, condition_id: condition2 },
+                { rule: 'category', bage_id: bage3.id, condition_id: condition3 }
+              )]

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
   end
 
   create_table "bages_rules", force: :cascade do |t|
-    t.string "title"
+    t.string "rule"
     t.bigint "bage_id"
     t.bigint "condition_id"
     t.datetime "created_at", null: false
@@ -42,14 +42,12 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
   end
 
   create_table "bages_users", force: :cascade do |t|
-    t.bigint "test_id"
-    t.bigint "user_id"
+    t.bigint "test_passage_id"
     t.bigint "bages_rule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bages_rule_id"], name: "index_bages_users_on_bages_rule_id"
-    t.index ["test_id"], name: "index_bages_users_on_test_id"
-    t.index ["user_id"], name: "index_bages_users_on_user_id"
+    t.index ["test_passage_id"], name: "index_bages_users_on_test_passage_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -59,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
   end
 
   create_table "conditions", force: :cascade do |t|
+    t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -89,7 +88,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
     t.integer "correct_questions", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "success", default: false
+    t.boolean "success_test", default: false
     t.index ["question_id"], name: "index_test_passages_on_question_id"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
@@ -136,6 +135,5 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
   add_foreign_key "bages_rules", "bages"
   add_foreign_key "bages_rules", "conditions"
   add_foreign_key "bages_users", "bages_rules"
-  add_foreign_key "bages_users", "tests"
-  add_foreign_key "bages_users", "users"
+  add_foreign_key "bages_users", "test_passages"
 end
