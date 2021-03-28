@@ -11,7 +11,8 @@ class TestPassage < ApplicationRecord
   # scope :test_attempt, -> (test_id, user) { where(test_success: true, user_id: user.id, test_id: test_id) }
 
   before_validation :before_validation_set_first_question, on: :create
-  after_validation :after_validation_next_question, on: :update
+  after_validation :after_validation_next_question, on: :update, if: ->  { current_question? }
+  after_validation :after_validation_check_success, on: :update, if: ->  { !current_question? }
 
   def self.test_attempt(test_id, user)
     where(test_success: true, user_id: user.id, test_id: test_id).count
@@ -35,6 +36,10 @@ class TestPassage < ApplicationRecord
     save!
   end
 
+  def current_question?
+    self.current_question != nil
+  end
+
   def first_attempt?
     Test.where(id: test_id).count == 1
   end
@@ -45,7 +50,6 @@ class TestPassage < ApplicationRecord
 
   def success?
     result > SUCCESS_PERCENT
-
   end
 
   def result
@@ -61,6 +65,14 @@ class TestPassage < ApplicationRecord
 
   def before_validation_set_first_question
     self.current_question = test.questions.first if test.present?
+  end
+
+  def after_validation_check_success
+    if completed? && success?
+      # self.success_test = true
+      # save!
+      update(success_test: true)
+    end
   end
 
   def after_validation_next_question
