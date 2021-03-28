@@ -27,38 +27,23 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
   create_table "bages", force: :cascade do |t|
     t.string "url_picture"
     t.string "title"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bages_on_user_id"
   end
 
   create_table "bages_rules", force: :cascade do |t|
     t.string "rule"
+    t.string "description"
     t.bigint "bage_id"
-    t.bigint "condition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bage_id"], name: "index_bages_rules_on_bage_id"
-    t.index ["condition_id"], name: "index_bages_rules_on_condition_id"
-  end
-
-  create_table "bages_users", force: :cascade do |t|
-    t.bigint "test_passage_id"
-    t.bigint "bages_rule_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bages_rule_id"], name: "index_bages_users_on_bages_rule_id"
-    t.index ["test_passage_id"], name: "index_bages_users_on_test_passage_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "title", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "conditions", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,6 +64,15 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
     t.datetime "updated_at", null: false
     t.integer "test_id"
     t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "rule_tests", force: :cascade do |t|
+    t.bigint "test_passage_id"
+    t.bigint "bages_rule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bages_rule_id"], name: "index_rule_tests_on_bages_rule_id"
+    t.index ["test_passage_id"], name: "index_rule_tests_on_test_passage_id"
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -132,8 +126,8 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
     t.index ["type"], name: "index_users_on_type"
   end
 
+  add_foreign_key "bages", "users"
   add_foreign_key "bages_rules", "bages"
-  add_foreign_key "bages_rules", "conditions"
-  add_foreign_key "bages_users", "bages_rules"
-  add_foreign_key "bages_users", "test_passages"
+  add_foreign_key "rule_tests", "bages_rules"
+  add_foreign_key "rule_tests", "test_passages"
 end

@@ -6,12 +6,24 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, foreign_key: 'question_id', class_name: 'Question', optional: true
 
-  scope :levels_user, -> (level) { where(test_success: true, user_id: current_user, test_id: Test.levels(level)).pluck(:test_id).uniq }
-  scope :categories_user, -> (category) { where(test_success: true, user_id: current_user, test_id: Test.categories(category)).pluck(:test_id).uniq }
-  scope :test_attempt, -> (test_id) { where(test_success: true, user_id: current_user, test_id: test_id }
+  # scope :levels_user, -> (level) { where(test_success: true, user_id: current_user, test_id: Test.levels(level)).pluck(:test_id).uniq }
+  # scope :categories_user, -> (category) { where(test_success: true, user_id: current_user, test_id: Test.categories(category)).pluck(:test_id).uniq }
+  # scope :test_attempt, -> (test_id, user) { where(test_success: true, user_id: user.id, test_id: test_id) }
 
   before_validation :before_validation_set_first_question, on: :create
   after_validation :after_validation_next_question, on: :update
+
+  def self.test_attempt(test_id, user)
+    where(test_success: true, user_id: user.id, test_id: test_id).count
+  end
+
+  def self.levels_user(level, user)
+    joins(:test).where(test_success: true, user_id: user.id, test.level: level).pluck(:test_id).uniq
+  end
+
+  def self.categories_user(category, user)
+    joins(:category).where(test_success: true, user_id: user.id, category.title: category).pluck(:test_id).uniq
+  end
 
   def accept!(answer_ids)
     if correct_answer?(answer_ids)

@@ -1,5 +1,4 @@
 class BagesRule < ApplicationRecord
-  has_many :bages_users, dependent: :destroy
+  has_many :rule_tests, dependent: :destroy
   belongs_to :bage
-  belongs_to :condition
 end

@@ -39,7 +39,7 @@ class Admin::BagesRulesController < ApplicationController
   private
 
   def bages_rule_params
-    params.require(:bages_rule).permit(:rule, :bage_id, :condition_id)
+    params.require(:bages_rule).permit(:rule, :bage_id, :description)
   end
 
   def set_bages_rule

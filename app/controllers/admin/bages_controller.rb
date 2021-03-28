@@ -9,7 +9,7 @@ class Admin::BagesController < ApplicationController
   end
 
   def create
-    @bage = Bage.new(bage_params)
+    @bage = current_user.bages.new(bage_params)
     if @bage.save
       redirect_to [:admin, @bage], notice: t('.success')
     else

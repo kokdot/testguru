@@ -77,9 +77,6 @@ ru:
         delete: "Удалить"
       new: 
         header: "Новый Бейдж"
-    conditions: 
-      create:
-        success: "Критерий успешно создан"
       index:
         id: 'Идентификатор'
         title: "Название"
@@ -87,10 +84,6 @@ ru:
         new: "Новый Критерий"
         header: "Список Критериев"
         description: "Описание"
-      condition: 
-        show: "Показать"
-        edit: "Редактировать"
-        delete: "Удалить"
       new: 
         header: "Новый Критерий"
     bages_rules: 
@@ -102,7 +95,7 @@ ru:
         id: 'Идентификатор'
         rule: "Правило"
         bage_id: "Название Бейджа"
-        condition_id: "Название критерия"
+        description: "Критерий"
         action: "Действие"
       bages_rule:
         show: "Show"
@@ -110,16 +103,6 @@ ru:
         delete: "Delete"
       new: 
         header: "Новое правило"
-    bages_users:
-      index:
-        header: "Список наград для: "
-        bage: "Название Бейджа"
-        url_picture: "Сылка на катринку"
-        test: "Название теста"
-        date: "Дата прохождения" 
-
-
-
 
   tests_mailer:
     complited_test:

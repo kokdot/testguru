@@ -12,7 +12,7 @@ class TestPassagesController < ApplicationController
 
     if @test_passage.completed?
       if @test_passage.success?
-        bage_service = BadgeService.new(@test_passage)
+        bage_service = BadgeService.new(@test_passage, current_user)
         bage_service.call
       end
       TestsMailer.completed_test(@test_passage).deliver_now

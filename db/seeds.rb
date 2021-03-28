@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 cat = Category.create(title: 'Ruby')
 jhon = User.create(last_name: 'jhon', first_name: 'jhon', type: "Admin", email: 'jhon@gmail.com', password: 'pfqrf2008', confirmed_at: Time.now)
+User.create(last_name: 'kok', first_name: '74', type: "User", email: 'kok.74@mail.ru', password: 'pfqrf2008', confirmed_at: Time.now)
 test = Test.create!(title: 'Основы языка Ruby.', level: 1, category_id: cat.id, user_id: jhon.id)
 question1 = Question.create(body: 'Чем отличается puts от print:', test_id: test.id)
 question2 = Question.create(body: 'Какой метод позволяет перевести строку в нижний регистр:', test_id: test.id)
@@ -42,12 +43,8 @@ bage1 = Bage.create(title: 'Лучший по професии', url_picture: 'h
 bage2 = Bage.create(title: 'Самый быстрый', url_picture: 'https://ibb.co/MRq2MCj')
 bage3 = Bage.create(title: 'Полиглот', url_picture: 'https://ibb.co/HPfddb2')
 
-condition1 = Condition.create(title: 'За прохождение теста с первого раза', description: 'Основы языка Ruby.')
-condition2 = Condition.create(title: 'За прохождение всех тестов уровня', description: '1')
-condition3 = Condition.create(title: 'За прохождение всех тестов категории', description: 'Ruby')
-
 BagesRule.create([
-                { rule: 'first_attempt_some', bage_id: bage1.id, condition_id: condition1 },
-                { rule: 'level', bage_id: bage2.id, condition_id: condition2 },
-                { rule: 'category', bage_id: bage3.id, condition_id: condition3 }
-              )]
+                { rule: 'first_attempt_some', bage_id: bage1.id, description: 'Основы языка Ruby.' },
+                { rule: 'level', bage_id: bage2.id, description: '1' },
+                { rule: 'category', bage_id: bage3.id, description: 'Ruby' }
+              ])

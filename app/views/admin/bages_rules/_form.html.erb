@@ -12,8 +12,8 @@
   </p>
 
   <p>
-    <%= form.label :condition_id %>: 
-    <%= form.collection_select :condition_id, Condition.all, :id, :title, prompt: true  %>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
   </p>
   <%= form.submit %>
 <% end %>
