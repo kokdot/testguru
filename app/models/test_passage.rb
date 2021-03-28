@@ -18,16 +18,19 @@ class TestPassage < ApplicationRecord
   end
 
   def self.levels_user(level, user)
-    joins(:test).where(test_success: true, user_id: user.id, test.level: level).pluck(:test_id).uniq
+    joins(:test).where(test_success: true, user_id: user.id, test: { level: level }).pluck(:test_id).uniq
   end
 
   def self.categories_user(category, user)
-    joins(:category).where(test_success: true, user_id: user.id, category.title: category).pluck(:test_id).uniq
+    joins(:category).where(test_success: true, user_id: user.id, category: { title: category }).pluck(:test_id).uniq
   end
 
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_questions += 1
+    end
+    if completed? && success?
+      self.success_test = true
     end
     save!
   end
@@ -42,6 +45,7 @@ class TestPassage < ApplicationRecord
 
   def success?
     result > SUCCESS_PERCENT
+
   end
 
   def result
@@ -61,11 +65,17 @@ class TestPassage < ApplicationRecord
 
   def after_validation_next_question
     self.current_question = next_question
-    if !next_question && success?
-      self.success_test = true
-      save!
-    end
+    # if completed? && success?
+    #   # self.success_test = true
+    #   # save!
+    #   update(success_test: true)
+    # end
   end
+
+  # def after_validation_next_question
+  #   self.current_question = next_question
+  #   # save
+  # end
 
   def correct_answer?(answer_ids)
     correct_answers_count = correct_answers.count
@@ -78,6 +88,7 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
+    p "next_question!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     test.questions.order(:id).where('id > ?', current_question.id).first
   end
 end

@@ -11,6 +11,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
+      byebug
       if @test_passage.success?
         bage_service = BadgeService.new(@test_passage, current_user)
         bage_service.call
