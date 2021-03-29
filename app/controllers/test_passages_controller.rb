@@ -11,9 +11,9 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
-      byebug
       if @test_passage.success?
-        bage_service = BadgeService.new(@test_passage, current_user)
+        @test_passage.update(success_test: true)
+        bage_service = BageService.new(@test_passage, current_user)
         bage_service.call
       end
       TestsMailer.completed_test(@test_passage).deliver_now

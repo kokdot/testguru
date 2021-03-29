@@ -56,6 +56,19 @@ en:
       action: "Action"
     test:
       start: "Start"
+  bages: 
+    index:
+      header: "List of all bages"
+      id: "Id"
+      title: "Title"
+      url_pictures: "Link for picture"
+    bages_by_user:
+      header: "List of all bages for user: "
+      id: "Id"
+      title: "Title"
+      url_pictures: "Links for pictures"
+    bage: 
+      url_picture: "Link for picture"
   
   test_passages:
     result:

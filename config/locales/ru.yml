@@ -25,6 +25,19 @@ ru:
       action: "Действие"
     test:
       start: "Старт"
+  bages: 
+    index:
+      header: "Список всех бейджей"
+      id: "Идетнификатор"
+      title: "Заглавие"
+      url_pictures: "Ссылка на картинки"
+    bages_by_user:
+      header: "Список всех бейджей пользователя: "
+      id: "Идетнификатор"
+      title: "Заглавие"
+      url_pictures: "Ссылка на картинки"
+    bage: 
+      url_picture: "Ссылка на картинку"
 
   test_passages:
     result:

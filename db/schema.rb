@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "bage_users", force: :cascade do |t|
+    t.bigint "bage_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bage_id"], name: "index_bage_users_on_bage_id"
+    t.index ["user_id"], name: "index_bage_users_on_user_id"
+  end
+
   create_table "bages", force: :cascade do |t|
     t.string "url_picture"
     t.string "title"
@@ -64,15 +73,6 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
     t.datetime "updated_at", null: false
     t.integer "test_id"
     t.index ["test_id"], name: "index_questions_on_test_id"
-  end
-
-  create_table "rule_tests", force: :cascade do |t|
-    t.bigint "test_passage_id"
-    t.bigint "bages_rule_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bages_rule_id"], name: "index_rule_tests_on_bages_rule_id"
-    t.index ["test_passage_id"], name: "index_rule_tests_on_test_passage_id"
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -126,8 +126,8 @@ ActiveRecord::Schema.define(version: 2021_03_25_054559) do
     t.index ["type"], name: "index_users_on_type"
   end
 
+  add_foreign_key "bage_users", "bages"
+  add_foreign_key "bage_users", "users"
   add_foreign_key "bages", "users"
   add_foreign_key "bages_rules", "bages"
-  add_foreign_key "rule_tests", "bages_rules"
-  add_foreign_key "rule_tests", "test_passages"
 end

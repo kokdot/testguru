@@ -6,24 +6,19 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, foreign_key: 'question_id', class_name: 'Question', optional: true
 
-  # scope :levels_user, -> (level) { where(test_success: true, user_id: current_user, test_id: Test.levels(level)).pluck(:test_id).uniq }
-  # scope :categories_user, -> (category) { where(test_success: true, user_id: current_user, test_id: Test.categories(category)).pluck(:test_id).uniq }
-  # scope :test_attempt, -> (test_id, user) { where(test_success: true, user_id: user.id, test_id: test_id) }
-
   before_validation :before_validation_set_first_question, on: :create
   after_validation :after_validation_next_question, on: :update, if: ->  { current_question? }
-  after_validation :after_validation_check_success, on: :update, if: ->  { !current_question? }
 
   def self.test_attempt(test_id, user)
-    where(test_success: true, user_id: user.id, test_id: test_id).count
+    where(success_test: true, user_id: user.id, test_id: test_id).count
   end
 
   def self.levels_user(level, user)
-    joins(:test).where(test_success: true, user_id: user.id, test: { level: level }).pluck(:test_id).uniq
+    joins(:test).where(success_test: true, user_id: user.id, tests: { level: level }).order(id: :asc).pluck(:test_id).uniq
   end
 
-  def self.categories_user(category, user)
-    joins(:category).where(test_success: true, user_id: user.id, category: { title: category }).pluck(:test_id).uniq
+  def self.categories_user(category_id, user)
+    joins(:test).where(success_test: true, user_id: user.id, tests: { category_id: category_id }).order(id: :asc).pluck(:test_id).uniq
   end
 
   def accept!(answer_ids)
@@ -33,15 +28,11 @@ class TestPassage < ApplicationRecord
     if completed? && success?
       self.success_test = true
     end
-    save!
+    save
   end
 
   def current_question?
     self.current_question != nil
-  end
-
-  def first_attempt?
-    Test.where(id: test_id).count == 1
   end
 
   def completed?
@@ -67,27 +58,9 @@ class TestPassage < ApplicationRecord
     self.current_question = test.questions.first if test.present?
   end
 
-  def after_validation_check_success
-    if completed? && success?
-      # self.success_test = true
-      # save!
-      update(success_test: true)
-    end
-  end
-
   def after_validation_next_question
     self.current_question = next_question
-    # if completed? && success?
-    #   # self.success_test = true
-    #   # save!
-    #   update(success_test: true)
-    # end
   end
-
-  # def after_validation_next_question
-  #   self.current_question = next_question
-  #   # save
-  # end
 
   def correct_answer?(answer_ids)
     correct_answers_count = correct_answers.count
@@ -100,7 +73,6 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    p "next_question!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     test.questions.order(:id).where('id > ?', current_question.id).first
   end
 end

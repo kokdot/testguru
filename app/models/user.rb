@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :author_tests, class_name: "Test", foreign_key: :user_id
   has_many :bages
+  has_many :bage_users, dependent: :destroy
+  has_many :bages, through: :bage_users
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 

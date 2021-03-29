@@ -1,7 +1,8 @@
 class Bage < ApplicationRecord
   has_many :bages_rules, dependent: :destroy
-  belongs_to :user, optional: true
-  def bage_of_user?(user)
-    user.id == user.id
+  has_many :bage_users, dependent: :destroy
+  has_many :users, through: :bage_users
+  def bage_of_user?(owner)
+    user.id == owner.id
   end
 end

@@ -4,6 +4,10 @@ class Admin::BagesController < ApplicationController
     @bages = Bage.all
   end
 
+  def bages_by_user
+    
+  end
+
   def new
     @bage = Bage.new
   end
