@@ -56,6 +56,7 @@ class TestPassage < ApplicationRecord
     start_time = self.created_at.to_i
     end_time = Time.now.to_i
     delta_time = end_time - start_time
+    test.timer -= delta_time if delta_time < test.timer
     delta_time > test.timer
   end
 
