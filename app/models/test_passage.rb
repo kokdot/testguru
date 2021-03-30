@@ -7,7 +7,7 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, foreign_key: 'question_id', class_name: 'Question', optional: true
 
   before_validation :before_validation_set_first_question, on: :create
-  after_validation :after_validation_next_question, on: :update, if: ->  { current_question? }
+  after_validation :after_validation_next_question, on: :update, if: ->  { !completed? }
 
   scope :test_is_success, -> { where(success_test: true) }
 
@@ -19,15 +19,18 @@ class TestPassage < ApplicationRecord
     if correct_answer?(answer_ids)
       self.correct_questions += 1
     end
+    if timer_is_over?
+      update(current_question: nil)
+    end
     if completed? && success?
       self.success_test = true
     end
     save
   end
 
-  def current_question?
-    self.current_question != nil
-  end
+  # def current_question?
+  #   self.current_question != nil
+  # end
 
   def completed?
     current_question.nil?
@@ -47,6 +50,14 @@ class TestPassage < ApplicationRecord
 
 
   private
+
+  def timer_is_over?
+    return false if test.timer == 0
+    start_time = self.created_at.to_i
+    end_time = Time.now.to_i
+    delta_time = end_time - start_time
+    delta_time > test.timer
+  end
 
   def before_validation_set_first_question
     self.current_question = test.questions.first if test.present?

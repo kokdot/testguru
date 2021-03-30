@@ -3,5 +3,6 @@
   <td class="sort"><%= test.title %></td>
   <td><%= test_level(test) %></td>
   <td><%= test.questions.count %></td>
-  <td><%= button_to t('.start'), start_test_path(test), class: "btn btn-outline-primary" %></td>
+  <td><%= test.timer %></td>
+  <td><%= button_to t('.start'), start_test_path(test), class: "btn btn-outline-primary+" %></td>
 </tr>

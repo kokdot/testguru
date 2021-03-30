@@ -6,7 +6,8 @@
   
   <div class="card-body">
     <div class="card-title">
-      <b><%= @test_passage.current_question.body %></b>
+      <b><%= @test_passage.current_question.body %></b> 
+      <p>Timer: <span class="seconds"><%= @test_passage.test.timer %></span></p>
     </div>
     <p class="card-text">This is the <%= @test_passage.number_of_questions %> of <%= @test_passage.test.questions.count %></p>
 
@@ -21,8 +22,8 @@
       <div class="progress-bar mb-3" style="background-color: green; height: 30px; width: 
       <%= (@test_passage.number_of_questions - 1) * 100 / @test_passage.test.questions.count %>%;"></div>
 
+      <p class="card-text"><%= form.submit 'Next', class: "btn btn-primary end_timer"  %></p>
       <p class="card-text"><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post, class: "btn btn-primary"  %></p>
-      <p class="card-text"><%= form.submit 'Next', class: "btn btn-primary"  %></p>
 
     <% end %>
   </div>
