@@ -19,10 +19,6 @@ class Test < ApplicationRecord
     where(level: level).order(id: :asc).pluck(:id)
   end
 
-  def self.categories_ids(category)
-    categories(category).order(id: :asc).pluck(:id)
-  end
-
   def self.categories_desc_title(category)
     categories(category).order(:title, :desc).pluck(:title)
   end

@@ -13,7 +13,7 @@ class TestPassagesController < ApplicationController
     if @test_passage.completed?
       if @test_passage.success?
         @test_passage.update(success_test: true)
-        bage_service = BageService.new(@test_passage, current_user)
+        bage_service = BageService.new(@test_passage)
         bage_service.call
       end
       TestsMailer.completed_test(@test_passage).deliver_now

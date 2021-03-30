@@ -1,7 +1,7 @@
 class BageService
-  def initialize(test_passage, user)
+  def initialize(test_passage)
     @test_passage = test_passage 
-    @user = user
+    @user = @test_passage.user
   end
 
   def call
@@ -21,11 +21,11 @@ class BageService
   #Выдать бейдж за прохождение всех тестов с определенной категорией
   def category_award?(description)
     category_id = Category.find_by(title: description )
-    Test.categories_ids(description) == TestPassage.categories_user(category_id, @user)
+    Test.categories(description).order(id: :asc).pluck(:id) == TestPassage.joins(:test).test_is_success.where(user_id: @user.id, tests: { category_id: category_id }).order(id: :asc).pluck(:test_id).uniq
   end
   #Выдать бейдж за прохождение всех тестов с определенным уровнем
   def level_award?(description)
     level = description.to_i
-    Test.levels(level) == TestPassage.levels_user(level, @user)
+    Test.where(level: level).order(id: :asc).pluck(:id)  == TestPassage.joins(:test).test_is_success.where(user_id: @user.id, tests: { level: level }).order(id: :asc).pluck(:test_id).uniq
   end
 end

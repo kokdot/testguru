@@ -9,16 +9,10 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_first_question, on: :create
   after_validation :after_validation_next_question, on: :update, if: ->  { current_question? }
 
+  scope :test_is_success, -> { where(success_test: true) }
+
   def self.test_attempt(test_id, user)
-    where(success_test: true, user_id: user.id, test_id: test_id).count
-  end
-
-  def self.levels_user(level, user)
-    joins(:test).where(success_test: true, user_id: user.id, tests: { level: level }).order(id: :asc).pluck(:test_id).uniq
-  end
-
-  def self.categories_user(category_id, user)
-    joins(:test).where(success_test: true, user_id: user.id, tests: { category_id: category_id }).order(id: :asc).pluck(:test_id).uniq
+    test_is_success.where(user_id: user.id, test_id: test_id).count
   end
 
   def accept!(answer_ids)
