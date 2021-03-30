@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root to: 'tests#index'
   get '/admin/tests/:id/update_inline', to: 'admin/tests#index'
 
@@ -26,6 +25,11 @@ Rails.application.routes.draw do
         resources :answers, shallow: true, except: :index
       end
     end
+    resources :bages
+    resources :bages_rules
   end
   resources :gists, only: :index
+  resources :bages, only: [:index] do
+      get :bages_by_user, on: :collection
+  end
 end

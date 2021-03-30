@@ -25,6 +25,19 @@ ru:
       action: "Действие"
     test:
       start: "Старт"
+  bages: 
+    index:
+      header: "Список всех бейджей"
+      id: "Идетнификатор"
+      title: "Заглавие"
+      url_pictures: "Ссылка на картинки"
+    bages_by_user:
+      header: "Список всех бейджей пользователя: "
+      id: "Идетнификатор"
+      title: "Заглавие"
+      url_pictures: "Ссылка на картинки"
+    bage: 
+      url_picture: "Ссылка на картинку"
 
   test_passages:
     result:
@@ -58,6 +71,51 @@ ru:
       logout: "Выйти"
       welcome: "Добро Пожаловать"
       gist: "Гист"
+    bages: 
+      create:
+        success: "Бейдж успешно создан"
+      edit: 
+        header: "Отредактируйте Бейдж: "
+      index:
+        id: 'Идентификатор'
+        title: "Название"
+        action: "Действие"
+        new: "Новый Бейдж"
+        header: "Все Бейджи"
+        url_picture: "Ссылка на картинку"
+      bage: 
+        url_picture: "Ссылка на картинку"
+        show: "Показать"
+        edit: "Редактировать"
+        delete: "Удалить"
+      new: 
+        header: "Новый Бейдж"
+      index:
+        id: 'Идентификатор'
+        title: "Название"
+        action: "Действие"
+        new: "Новый Критерий"
+        header: "Список Критериев"
+        description: "Описание"
+      new: 
+        header: "Новый Критерий"
+    bages_rules: 
+      create:
+        success: "Правило  успешно создано"
+      index:
+        header: "Список правил присвоения бейджей"
+        new: "Новое правило"
+        id: 'Идентификатор'
+        rule: "Правило"
+        bage_id: "Название Бейджа"
+        description: "Критерий"
+        action: "Действие"
+      bages_rule:
+        show: "Show"
+        edit: "Edit"
+        delete: "Delete"
+      new: 
+        header: "Новое правило"
 
   tests_mailer:
     complited_test:

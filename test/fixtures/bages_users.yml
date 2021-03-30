@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test: one
+  user: one
+  bages_rule: one
+
+two:
+  test: two
+  user: two
+  bages_rule: two

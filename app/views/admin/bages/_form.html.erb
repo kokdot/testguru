@@ -1,0 +1,15 @@
+<%= form_with model: [:admin, @bage], local: true do |form| %>
+  <%= render 'shared/errors', resource: @bage  %>
+  
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :url_picture %>
+    <%= form.text_field :url_picture %>
+  </p>
+
+  <%= form.submit %>
+<% end %>

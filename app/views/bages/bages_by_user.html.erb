@@ -1,0 +1,14 @@
+<h1><%= t('.header') %><%= current_user.email %></h1>
+
+<table class="table">
+  <tr>
+    <th scope="col"><%= t('.id') %></th>
+    <th scope="col", class="sort-by-title pointer">
+      <%= t('.title') %>
+      <%= octicon 'arrow-up', class: 'text-success hide' %>
+      <%= octicon 'arrow-down', class: 'text-success hide' %>
+    </th>
+    <th scope="col"><%= t('.url_pictures') %></th>
+  </tr>
+  <%= render @bages %>
+</table>

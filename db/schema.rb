@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_074703) do
+ActiveRecord::Schema.define(version: 2021_03_25_054559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,33 @@ ActiveRecord::Schema.define(version: 2021_03_12_074703) do
     t.datetime "updated_at", null: false
     t.integer "question_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "bage_users", force: :cascade do |t|
+    t.bigint "bage_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bage_id"], name: "index_bage_users_on_bage_id"
+    t.index ["user_id"], name: "index_bage_users_on_user_id"
+  end
+
+  create_table "bages", force: :cascade do |t|
+    t.string "url_picture"
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bages_on_user_id"
+  end
+
+  create_table "bages_rules", force: :cascade do |t|
+    t.string "rule"
+    t.string "description"
+    t.bigint "bage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bage_id"], name: "index_bages_rules_on_bage_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -55,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_03_12_074703) do
     t.integer "correct_questions", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "success_test", default: false
     t.index ["question_id"], name: "index_test_passages_on_question_id"
     t.index ["test_id"], name: "index_test_passages_on_test_id"
     t.index ["user_id"], name: "index_test_passages_on_user_id"
@@ -98,4 +126,8 @@ ActiveRecord::Schema.define(version: 2021_03_12_074703) do
     t.index ["type"], name: "index_users_on_type"
   end
 
+  add_foreign_key "bage_users", "bages"
+  add_foreign_key "bage_users", "users"
+  add_foreign_key "bages", "users"
+  add_foreign_key "bages_rules", "bages"
 end
