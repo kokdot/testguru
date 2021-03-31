@@ -8,7 +8,6 @@ class TestPassagesController < ApplicationController
   end
 
   def update 
-    # redirect_to result_test_passage_path(@test_passage) and return if @test_passage.timer_is_over?
     @test_passage.accept!(params[:answer_ids])
     if @test_passage.completed? || @test_passage.timer_is_over?
       if @test_passage.success?
