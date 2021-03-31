@@ -7,10 +7,9 @@ class TestPassagesController < ApplicationController
   def result
   end
 
-  def update
+  def update 
     @test_passage.accept!(params[:answer_ids])
-
-    if @test_passage.completed?
+    if @test_passage.completed? || @test_passage.timer_is_over?
       if @test_passage.success?
         @test_passage.update(success_test: true)
         bage_service = BageService.new(@test_passage)

@@ -8,7 +8,7 @@
 cat = Category.create(title: 'Ruby')
 jhon = User.create(last_name: 'jhon', first_name: 'jhon', type: "Admin", email: 'jhon@gmail.com', password: 'pfqrf2008', confirmed_at: Time.now)
 User.create(last_name: 'kok', first_name: '74', type: "User", email: 'kok.74@mail.ru', password: 'pfqrf2008', confirmed_at: Time.now)
-test = Test.create!(title: 'Основы языка Ruby.', level: 1, category_id: cat.id, user_id: jhon.id)
+test = Test.create!(title: 'Основы языка Ruby.', level: 1, category_id: cat.id, user_id: jhon.id, timer: 30)
 question1 = Question.create(body: 'Чем отличается puts от print:', test_id: test.id)
 question2 = Question.create(body: 'Какой метод позволяет перевести строку в нижний регистр:', test_id: test.id)
 question3 = Question.create(body: "Что выведет этот код: \n some = 25 \n print(“Переменная: ” + some)", test_id: test.id)
