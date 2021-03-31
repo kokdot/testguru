@@ -7,7 +7,9 @@
   <div class="card-body">
     <div class="card-title">
       <b><%= @test_passage.current_question.body %></b> 
-      <p>Timer: <span class="seconds"><%= @test_passage.test.timer %></span></p>
+      <% if @test_passage.test.timer > 0 %>
+        <p>Timer: <span class="seconds"><%= @test_passage.test.timer - @test_passage.delta_time %></span></p>
+      <% end %>
     </div>
     <p class="card-text">This is the <%= @test_passage.number_of_questions %> of <%= @test_passage.test.questions.count %></p>
 

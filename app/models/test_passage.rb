@@ -19,18 +19,11 @@ class TestPassage < ApplicationRecord
     if correct_answer?(answer_ids)
       self.correct_questions += 1
     end
-    if timer_is_over?
-      update(current_question: nil)
-    end
     if completed? && success?
       self.success_test = true
     end
     save
   end
-
-  # def current_question?
-  #   self.current_question != nil
-  # end
 
   def completed?
     current_question.nil?
@@ -41,24 +34,23 @@ class TestPassage < ApplicationRecord
   end
 
   def result
-    correct_questions / test.questions.count * 100
+    correct_questions * 100 / test.questions.count
   end
 
   def number_of_questions
     test.questions.order(id: :asc).where('id < ?', question_id).count + 1
   end
 
-
-  private
-
   def timer_is_over?
     return false if test.timer == 0
-    start_time = self.created_at.to_i
-    end_time = Time.now.to_i
-    delta_time = end_time - start_time
-    test.timer -= delta_time if delta_time < test.timer
-    delta_time > test.timer
+    delta_time >= test.timer
   end
+
+  def delta_time
+    Time.now.to_i - self.created_at.to_i
+  end
+
+  private
 
   def before_validation_set_first_question
     self.current_question = test.questions.first if test.present?

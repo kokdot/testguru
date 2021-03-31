@@ -11,7 +11,7 @@ document.addEventListener('turbolinks:load', function() {
       
       time.text(newTime)
       
-      if(newTime > 0) timerDecrement()
+      if(newTime > 0) { timerDecrement() } else { $('.end_timer').click() }
     }, 1000)
   }
 })
